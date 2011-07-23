@@ -1,28 +1,18 @@
 net = require 'net'
 
 # initialize these at module scope
-clients = [] 
 ais_feed = null
 decoder_stream = null
+websocket_io = null
 
 [ cmd, script, feed_host, feed_port ] = process.argv 
-
-start_main_server = ->
-    
-    main_server = net.Server (socket) ->
-        clients.push socket
-        socket.on 'end', ->      
-            clients.splice clients.indexOf(socket), 1
-
-    main_server.listen(59020)
-
-
+   
 connect_ais_feed = -> 
                      
-    ais_feed = net.createConnection feed_host, feed_port
+    ais_feed = net.createConnection feed_port, feed_host
 
     ais_feed.on 'connect', ->
-        console.log "connected to ais feed #{host}:#{port}"
+        console.log "connected to ais feed #{feed_host}:#{feed_port}"
 
     ais_feed.on 'end', ->
         console.log "ais feed closed, attempting reconnection.."
@@ -46,14 +36,23 @@ connect_decoder_stream = ->
         connect_decoder_stream()
 
     decoder_stream.on 'data', (decoded_data) -> 
-        for client in clients
-            client.write(decoded_data + "\n") 
+        websocket_io.sockets.emit decoded_data
+
+start_websocket_server = ->
+    websocket_io = require('socket.io').listen(8080)
+    websocket_io.sockets.on 'connection', (socket) ->
+        console.log "client conneted"
 
 # setup and go
 
 if (feed_host and feed_port)
     connect_ais_feed()    
     connect_decoder_stream() 
-    start_main_server()
+    start_websocket_server()
 else
     console.log "Usage: ais_server <feed-host> <port>"
+
+
+
+
+
