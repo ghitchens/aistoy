@@ -34,7 +34,7 @@ createMarker = (point, name, address, phone, type, i) ->
   marker = new GMarker(point, customIcons[type])
   html = "<b>" + name + "</b> <br/>" + address + "<br/>" + phone
   markers.push marker
-  markers[i].markId = i
+    markers[i].markId = i
   markers[i].groupSelect = false
   GEvent.addListener marker, "dblclick", ->
     marker.openInfoWindowHtml html
