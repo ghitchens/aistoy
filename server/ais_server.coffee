@@ -5,7 +5,7 @@ clients = []
 ais_feed = null
 decoder_stream = null
 
-cmd, script, feed_host, feed_port = process.argv 
+[ cmd, script, feed_host, feed_port ] = process.argv 
 
 start_main_server = ->
     
@@ -51,7 +51,7 @@ connect_decoder_stream = ->
 
 # setup and go
 
-if (host and port)
+if (feed_host and feed_port)
     connect_ais_feed()    
     connect_decoder_stream() 
     start_main_server()
