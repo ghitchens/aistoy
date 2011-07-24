@@ -1,0 +1,123 @@
+/**************** Generic Selectors ****************/
+
+
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+body{
+	font-family:Verdana,Tahoma,sans-serif;
+	font-size:1em;
+	color:#42006F;
+	text-align:left;
+}
+
+h3{
+	font-family:Andalus,"Times New Roman",serif;
+	font-size:3em;
+	font-weight:normal;
+	color:white;
+}
+
+h3:hover { 
+    color:yellow; }
+
+/**************** Pseudo classes ****************/
+
+a:link{
+	color:#840300;
+	text-decoration:none;
+	font-weight:normal;
+}
+
+li:link{
+	color:#840300;
+	text-decoration:none;
+	font-weight:normal;
+}
+
+a:visited{
+	color:#840300;
+	text-decoration:none;
+	font-weight:normal;
+}
+
+li a:visited{
+	color:#840300;
+	text-decoration:none;
+	font-weight:normal;
+}
+
+a:hover{  
+	color:white;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+li a:hover{
+	display:block;
+	color:#840300;
+	padding-bottom:5px;
+	font-weight:normal;
+	border-bottom-width:1px;
+	border-bottom-style:solid;
+	border-bottom-color:#C6EC8C;
+}
+
+a:active{
+	color:#840300;
+	font-weight:normal;
+}
+
+/************************* Classes *************************/
+
+.bkgrndMapChartCanvas{
+	position:absolute;
+	width:30%;
+	height:40%;
+	background-color:#FFFFCC;
+	z-index:2;
+	border:1px solid black;
+	bottom:20px;
+	right:20px;
+}
+
+/************************* ID's *************************/
+
+#wholePage{
+	height:auto !important;
+	height:100%;
+	min-height:100%;
+	width:100%;
+	text-align:left;
+	margin:0 auto;
+}	
+
+#logo{
+	position:absolute;
+	text-align:left;
+	left:70px;
+	top:5px;
+	z-index:2;
+}
+
+#menu{
+	position:absolute;
+	z-index:2000;
+	text-align:left;
+	top:5px;
+	left:370px;
+	background-color:white;
+	border:1px solid black;
+}
+
+#bkgrndMap{
+	position:absolute;
+	height:100%;
+	width:100%;
+	text-align:left;
+	margin:0 auto;
+	z-index:1;
+}

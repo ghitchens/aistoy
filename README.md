@@ -1,21 +1,25 @@
 
 ## An experimental real-time AIS display using: ##
 
-- [nodejs](http://nodejs.org/)
 - [coffeescript](http://coffeescript.org/)
-- [raphael.js](http://raphaeljs.org)
+- [nodejs](http://nodejs.org/)
 - [websockets](http://dev.w3.org/html5/websockets/)
 
 All the cool kids are playing with these, and I wanted to see what the fuss was about. Given that I work with marine navigation, **aistoy** seemed to be a natural fit.
 
-The **server/ais_server.coffee** script (written in coffee-script and node.js) connects
+I also really needed something to get me immersed in javascript (I've blamed my resistance on the ugly syntax, but with coffee-script I finally relented).
+
+### The Server ###
+
+The **server/server.coffee** script (written in coffee-script and node.js) connects
 to an AIS feed (specified on the command line), and creates a second connection to an
 ais decoder server, which is unfortunately currently a python script, as the ais decoder
-library I found was for python (I plan to fix this if I have time some day). 
+library I found was for python (I plan to fix this if I have time some day).   It opens a server a allowing web-socket connections which are used to stream the real-time data to the browser.
 
-The client is a mish-mash of scripts I borrowed (hopefully with appropriate licenses)
-and another coffee script that ties it all together for a nice view using google
-maps and raphael.js.git
+### The Client ###
+
+The client is a quick hack for now - needs some more work, but you can get the 
+idea pretty well in spite of my horrible google maps icons.
 
 ### Conclusions: ###
 
@@ -43,8 +47,8 @@ maps and raphael.js.git
   
 ### Server Operation (in server directory) ####
 
-      python ais_decode_server.py
-      coffee ais_server.coffee
+    python ais_decode_server.py
+    coffee ais_server.coffee
     
   
 
